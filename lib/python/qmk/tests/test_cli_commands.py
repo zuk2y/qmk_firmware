@@ -54,3 +54,10 @@ def test_list_keyboards():
     # check to see if a known keyboard is returned
     # this will fail if handwired/onekey/pytest is removed
     assert 'handwired/onekey/pytest' in result.stdout
+
+
+def test_info():
+    result = check_subcommand('info', 'handwired/onekey/pytest')
+    assert result.returncode == 0
+    assert 'handwired/onekey/pytest:' in result.stdout
+    assert 'processor: STM32F303' in result.stdout
